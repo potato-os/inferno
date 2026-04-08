@@ -35,6 +35,23 @@ def test_projector_repo_for_qwen35_9b_without_source_url():
     assert projector_repo_for_model("Qwen3.5-9B-Q4_K_S-3.92bpw.gguf") == "unsloth/Qwen3.5-9B-GGUF"
 
 
+@pytest.mark.parametrize(
+    "filename, source_url",
+    [
+        ("Qwen3.5-9B-Uncensored-Q4_K_M.gguf", None),
+        (
+            "Qwen3.5-9B-Q4_K_M.gguf",
+            "https://huggingface.co/SomeUser/Qwen3.5-9B-Custom/resolve/main/Qwen3.5-9B-Q4_K_M.gguf",
+        ),
+        ("SomeUser-Qwen3.5-9B-Instruct-Q5_K_S.gguf", None),
+        ("Qwen3.5-9B.gguf", None),
+    ],
+)
+def test_projector_repo_for_qwen35_9b_non_byteshape_variants(filename, source_url):
+    """Any non-ByteShape Qwen3.5-9B model resolves to unsloth generic repo."""
+    assert projector_repo_for_model(filename, source_url=source_url) == "unsloth/Qwen3.5-9B-GGUF"
+
+
 def test_projector_repo_returns_none_for_unknown_qwen35_size():
     """Unrecognized Qwen3.5 sizes must return None, not silently fall back."""
     assert projector_repo_for_model("Qwen3.5-7B-Q4_K_M.gguf") is None
