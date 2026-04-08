@@ -5,11 +5,9 @@ from pathlib import Path
 from typing import Any, Final
 
 QWEN35_PROJECTOR_REPO_RULES: Final[tuple[tuple[tuple[str, ...], str], ...]] = (
-    (("35b", "a3b", "hauhaucs"), "HauhauCS/Qwen3.5-35B-A3B-Uncensored-HauhauCS-Aggressive"),
     (("35b", "a3b"), "AesSedai/Qwen3.5-35B-A3B-GGUF"),
     (("9b", "byteshape"), "byteshape/Qwen3.5-9B-GGUF"),
     (("9b",), "unsloth/Qwen3.5-9B-GGUF"),
-    (("4b", "hauhaucs"), "HauhauCS/Qwen3.5-4B-Uncensored-HauhauCS-Aggressive"),
     (("4b",), "unsloth/Qwen3.5-4B-GGUF"),
     (("2b",), "unsloth/Qwen3.5-2B-GGUF"),
     (("0.8b",), "unsloth/Qwen3.5-0.8B-GGUF"),
