@@ -33,7 +33,9 @@ DEFAULT_MODEL_CHAT_SETTINGS = {
     "top_p": 0.8,
     "top_k": 20,
     "repetition_penalty": 1.0,
-    "presence_penalty": 1.5,
+    # 0.0 on purpose: any positive penalty also punishes tokens that must
+    # repeat (identifiers, quoting, array elements) and degrades code output.
+    "presence_penalty": 0.0,
     "max_tokens": 16384,
     "stream": True,
     "generation_mode": "random",
